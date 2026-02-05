@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Sourav ❤️ Laksmi</title>
+
+
+
+  <style>
+
+    * {
+
+      box-sizing: border-box;
+
+      margin: 0;
+
+      padding: 0;
+
+      font-family: 'Poppins', sans-serif;
+
+    }
+
+
+
+    body {
+
+      min-height: 100vh;
+
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: #fff;
+
+      text-align: center;
+
+      padding: 20px;
+
+      overflow: hidden;
+
+    }
+
+
+
+    .card {
+
+      background: rgba(255, 255, 255, 0.15);
+
+      backdrop-filter: blur(10px);
+
+      border-radius: 20px;
+
+      padding: 30px 25px;
+
+      max-width: 420px;
+
+      width: 100%;
+
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+      position: relative;
+
+      z-index: 2;
+
+    }
+
+
+
+    h1 {
+
+      font-size: 2.2rem;
+
+      margin-bottom: 10px;
+
+    }
+
+
+
+    .heart {
+
+      font-size: 3rem;
+
+      animation: beat 1.2s infinite;
+
+      margin: 10px 0 20px;
+
+    }
+
+
+
+    @keyframes beat {
+
+      0%, 100% { transform: scale(1); }
+
+      50% { transform: scale(1.2); }
+
+    }
+
+
+
+    p {
+
+      font-size: 1rem;
+
+      line-height: 1.6;
+
+      margin-bottom: 15px;
+
+    }
+
+
+
+    .date {
+
+      font-size: 0.95rem;
+
+      opacity: 0.9;
+
+      margin-bottom: 15px;
+
+    }
+
+
+
+    .countdown {
+
+      font-size: 1rem;
+
+      margin-bottom: 20px;
+
+      font-weight: 500;
+
+    }
+
+
+
+    button {
+
+      background: #fff;
+
+      color: #ff4d6d;
+
+      border: none;
+
+      padding: 12px 20px;
+
+      border-radius: 25px;
+
+      font-size: 1rem;
+
+      cursor: pointer;
+
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    }
+
+
+
+    button:hover {
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+
+    }
+
+
+
+    .hidden {
+
+      display: none;
+
+      margin-top: 20px;
+
+      font-size: 1.05rem;
+
+    }
+
+
+
+    .languages {
+
+      margin-top: 15px;
+
+      font-size: 0.95rem;
+
+      opacity: 0.9;
+
+    }
+
+
+
+    footer {
+
+      margin-top: 25px;
+
+      font-size: 0.85rem;
+
+      opacity: 0.85;
+
+    }
+
+
+
+    /* Floating hearts */
+
+    .floating-heart {
+
+      position: absolute;
+
+      bottom: -20px;
+
+      font-size: 1.5rem;
+
+      animation: floatUp 6s linear infinite;
+
+      opacity: 0.8;
+
+    }
+
+
+
+    @keyframes floatUp {
+
+      0% {
+
+        transform: translateY(0) translateX(0);
+
+        opacity: 0.8;
+
+      }
+
+      100% {
+
+        transform: translateY(-120vh) translateX(30px);
+
+        opacity: 0;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+
+<body>
+
+
+
+  <!-- Background Music -->
+
+  <audio id="music" loop>
+
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+
+  </audio>
+
+
+
+  <div class="card">
+
+    <h1>Sourav ❤️ Laksmi</h1>
+
+    <div class="heart">💖</div>
+
+
+
+    <p>
+
+      From the moment you came into my life, everything felt brighter, warmer,
+
+      and more meaningful.
+
+    </p>
+
+
+
+    <p class="date">
+
+      Together since <strong>January 9, 2023</strong>
+
+    </p>
+
+
+
+    <div class="countdown" id="countdown"></div>
+
+
+
+    <button onclick="showLove()">Tap for my heart 💌</button>
+
+
+
+    <div id="loveText" class="hidden">
+
+      <p>
+
+        Laksmi, you are my safe place, my happiness, and my forever Valentine.
+
+      </p>
+
+      <p>
+
+        I promise to love you today, tomorrow, and always. 🌹
+
+      </p>
+
+
+
+      <div class="languages">
+
+        I love you 💕<br>
+
+        English: I love you<br>
+
+        Hindi: मैं तुमसे प्यार करता हूँ<br>
+
+        Malayalam: ഞാൻ നിന്നെ സ്നേഹിക്കുന്നു<br>
+
+        Tamil: நான் உன்னை காதலிக்கிறேன்
+
+      </div>
+
+    </div>
+
+
+
+    <footer>Happy Valentine 💘</footer>
+
+  </div>
+
+
+
+  <script>
+
+    function showLove() {
+
+      document.getElementById("loveText").style.display = "block";
+
+      document.getElementById("music").play();
+
+    }
+
+
+
+    /* Countdown to next Valentine's Day */
+
+    function updateCountdown() {
+
+      const now = new Date();
+
+      let year = now.getFullYear();
+
+      let valentines = new Date(`February 14, ${year}`);
+
+
+
+      if (now > valentines) {
+
+        valentines = new Date(`February 14, ${year + 1}`);
+
+      }
+
+
+
+      const diff = valentines - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+
+
+      document.getElementById("countdown").innerText =
+
+        `⏳ ${days} days left for next Valentine’s Day`;
+
+    }
+
+
+
+    updateCountdown();
+
+
+
+    /* Floating hearts generator */
+
+    setInterval(() => {
+
+      const heart = document.createElement("div");
+
+      heart.className = "floating-heart";
+
+      heart.innerText = "💖";
+
+      heart.style.left = Math.random() * 100 + "vw";
+
+      heart.style.animationDuration = 4 + Math.random() * 3 + "s";
+
+      document.body.appendChild(heart);
+
+
+
+      setTimeout(() => heart.remove(), 7000);
+
+    }, 500);
+
+  </script>
+
+
+
+</body>
+
+</html>
